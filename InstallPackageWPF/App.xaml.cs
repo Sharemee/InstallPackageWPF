@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Windows;
@@ -22,7 +23,7 @@ namespace InstallPackageWPF
             {
                 Environment.Exit(-1);
             }
-            System.Diagnostics.Process[] p = System.Diagnostics.Process.GetProcessesByName("MusicTeachingWindow");
+            Process[] p = Process.GetProcessesByName("MusicTeachingWindow");
             if (p != null && p.Count() > 0)
             {
                 MessageBox.Show("请退出正在运行的“音乐教学客户端”程序");
