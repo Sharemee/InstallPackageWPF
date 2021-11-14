@@ -11,13 +11,10 @@
                     <Grid Background="Transparent">
                         <Border Opacity="1" Margin="5" Name="border" Background="{TemplateBinding Background}" CornerRadius="22" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
                             <Border.Effect>
-                                <DropShadowEffect ShadowDepth="0"  
-                          Color="White"  
-                          Opacity="1"  
-                          BlurRadius="20"/>
+                                <DropShadowEffect ShadowDepth="0" Color="White" Opacity="1" BlurRadius="20"/>
                             </Border.Effect>
                         </Border>
-                        <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"></ContentPresenter>
+                        <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
@@ -26,12 +23,12 @@
                             <!--<Setter Property="Background" Value="#FFFF8B02"></Setter>-->
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="Foreground" Value="#FFFFE38B"></Setter>
-                            <Setter Property="Background" Value="#FFFF8B02"></Setter>
-                            <Setter Property="BorderThickness" Value="0"></Setter>
+                            <Setter Property="Foreground" Value="#FFFFE38B"/>
+                            <Setter Property="Background" Value="#FFFF8B02"/>
+                            <Setter Property="BorderThickness" Value="0"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Setter Property="Visibility" Value="Collapsed"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

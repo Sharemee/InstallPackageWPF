@@ -531,19 +531,19 @@ namespace InstallPackageWPF
         }
         public static void CreateProgramsUninstallShortcut(string targetPath, string menuName)
         {
-            string startMenu = System.Environment.GetFolderPath(System.Environment.SpecialFolder.StartMenu);
-            var shellType = Type.GetTypeFromProgID("WScript.Shell");
+            string startMenu = Environment.GetFolderPath(Environment.SpecialFolder.StartMenu);
+            Type shellType = Type.GetTypeFromProgID("WScript.Shell");
             dynamic shell = Activator.CreateInstance(shellType);
             if (!string.IsNullOrEmpty(menuName))
             {
                 startMenu += "\\" + menuName;
-                if (!System.IO.Directory.Exists(startMenu))
+                if (!Directory.Exists(startMenu))
                 {
-                    System.IO.Directory.CreateDirectory(startMenu);
+                    Directory.CreateDirectory(startMenu);
 
                 }
             }
-            var shortcut = shell.CreateShortcut(startMenu + "\\卸载音乐教学客户端.lnk");
+            dynamic shortcut = shell.CreateShortcut(startMenu + "\\卸载音乐教学客户端.lnk");
             shortcut.TargetPath = targetPath + "\\" + UninstallExe;
             shortcut.WorkingDirectory = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;
             shortcut.Save();
