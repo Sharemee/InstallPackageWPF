@@ -28,7 +28,7 @@ namespace InstallPackageWPF.WindowsBase
             this.DataContext = this;
             style1 = new ResourceDictionary();
             style1.Source = new Uri("InstallPackageWPF;component/WindowsBase/ChildWindowStyle.xaml", UriKind.Relative);
-            this.Style = (System.Windows.Style)style1["ChildWindowStyle"];
+            this.Style = (Style)style1["ChildWindowStyle"];
         }
 
 
@@ -59,28 +59,16 @@ namespace InstallPackageWPF.WindowsBase
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-                 this.DragMove();
+                this.DragMove();
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected PropertyChangedEventHandler PropertyChangedHandler
-        {
-            get
-            {
-                return PropertyChanged;
-            }
-        }
+        protected PropertyChangedEventHandler PropertyChangedHandler => PropertyChanged;
 
         public event PropertyChangingEventHandler PropertyChanging;
 
-        protected PropertyChangingEventHandler PropertyChangingHandler
-        {
-            get
-            {
-                return PropertyChanging;
-            }
-        }
+        protected PropertyChangingEventHandler PropertyChangingHandler => PropertyChanging;
 
         public void VerifyPropertyName(string propertyName)
         {
@@ -104,33 +92,20 @@ namespace InstallPackageWPF.WindowsBase
                 throw new ArgumentException("Property not found", propertyName);
             }
         }
-        public virtual void RaisePropertyChanging(
-            string propertyName)
+        public virtual void RaisePropertyChanging(string propertyName)
         {
             VerifyPropertyName(propertyName);
 
-            var handler = PropertyChanging;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangingEventArgs(propertyName));
-            }
+            PropertyChanging?.Invoke(this, new PropertyChangingEventArgs(propertyName));
         }
-        public virtual void RaisePropertyChanged(
-           string propertyName)
+        public virtual void RaisePropertyChanged(string propertyName)
         {
             VerifyPropertyName(propertyName);
 
-            var handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        protected bool Set<T>(
-           string propertyName,
-           ref T field,
-           T newValue)
+        protected bool Set<T>(string propertyName, ref T field, T newValue)
         {
             if (EqualityComparer<T>.Default.Equals(field, newValue))
             {
@@ -144,10 +119,7 @@ namespace InstallPackageWPF.WindowsBase
 
             return true;
         }
-        protected bool Set<T>(
-            ref T field,
-            T newValue,
-             string propertyName = null)
+        protected bool Set<T>(ref T field, T newValue, string propertyName = null)
         {
             return Set(propertyName, ref field, newValue);
         }
