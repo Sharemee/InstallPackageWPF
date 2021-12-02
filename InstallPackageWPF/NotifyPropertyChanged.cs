@@ -62,34 +62,21 @@ namespace InstallPackageWPF
         protected virtual void OnPropertyChanged(PropertyChangedEventArgs args)
         {
             Contract.Requires(args != null);
-            var handler = this.PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, args);
-            }
+            PropertyChanged?.Invoke(this, args);
         }
         public virtual void RaisePropertyChanging(
             string propertyName)
         {
             VerifyPropertyName(propertyName);
 
-            var handler = PropertyChanging;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangingEventArgs(propertyName));
-            }
+            PropertyChanging?.Invoke(this, new PropertyChangingEventArgs(propertyName));
         }
 
         public virtual void RaisePropertyChanged(
             string propertyName)
         {
             VerifyPropertyName(propertyName);
-
-            var handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public virtual void RaisePropertyChanging<T>(Expression<Func<T>> propertyExpression)
