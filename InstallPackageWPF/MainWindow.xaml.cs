@@ -5,6 +5,8 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -282,6 +284,15 @@ namespace InstallPackageWPF
         private void Worker_DoWork(object sender, DoWorkEventArgs e)
         {
             worker.ReportProgress(2);
+
+            int s = 100;
+            for (int i = 1; i <= s; i++)
+            {
+                worker.ReportProgress(i);
+                Thread.Sleep(3000);
+            }
+            return;
+
             string unzipPath = InstallPath.Replace('\\', '/');
             try
             {
