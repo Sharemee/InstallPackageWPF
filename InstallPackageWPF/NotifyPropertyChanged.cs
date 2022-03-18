@@ -27,9 +27,7 @@ namespace InstallPackageWPF
         public void VerifyPropertyName(string propertyName)
         {
             Type myType = GetType();
-
-            if (!string.IsNullOrEmpty(propertyName)
-                && myType.GetProperty(propertyName) == null)
+            if (!string.IsNullOrEmpty(propertyName) && myType.GetProperty(propertyName) == null)
             {
                 if (this is ICustomTypeDescriptor descriptor)
                 {
@@ -88,8 +86,7 @@ namespace InstallPackageWPF
                 throw new ArgumentNullException("propertyExpression");
             }
 
-            MemberExpression memberExpression = propertyExpression.Body as MemberExpression;
-            if (memberExpression == null)
+            if (!(propertyExpression.Body is MemberExpression memberExpression))
             {
                 throw new ArgumentException("属性错误", "propertyExpression");
             }
@@ -105,51 +102,33 @@ namespace InstallPackageWPF
             //{
             //    throw new ArgumentException("属性错误", "propertyExpression");
             //}
-
             return memberExpression.Member.Name;
         }
 
 
-        protected bool Set<T>(
-            Expression<Func<T>> propertyExpression,
-            ref T field,
-            T newValue)
+        protected bool Set<T>(Expression<Func<T>> propertyExpression, ref T field, T newValue)
         {
             if (EqualityComparer<T>.Default.Equals(field, newValue))
             {
                 return false;
             }
-
             RaisePropertyChanging(propertyExpression);
             field = newValue;
             RaisePropertyChanged(propertyExpression);
             return true;
         }
 
-
-        protected bool Set<T>(
-            string propertyName,
-            ref T field,
-            T newValue)
+        protected bool Set<T>(string propertyName, ref T field, T newValue)
         {
             if (EqualityComparer<T>.Default.Equals(field, newValue))
             {
                 return false;
             }
-
             RaisePropertyChanging(propertyName);
             field = newValue;
-
             RaisePropertyChanged(propertyName);
-
             return true;
         }
-        protected bool Set<T>(
-            ref T field,
-            T newValue,
-             string propertyName = null)
-        {
-            return Set(propertyName, ref field, newValue);
-        }
+        protected bool Set<T>(ref T field, T newValue, string propertyName = null) => Set(propertyName, ref field, newValue);
     }
 }
