@@ -13,49 +13,31 @@ using System.Threading.Tasks;
 
 namespace InstallPackageWPF
 {
-    public class NotifyPropertyChanged: INotifyPropertyChanged
+    public class NotifyPropertyChanged : INotifyPropertyChanged
     {
-       
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected PropertyChangedEventHandler PropertyChangedHandler
-        {
-            get
-            {
-                return PropertyChanged;
-            }
-        }
+        protected PropertyChangedEventHandler PropertyChangedHandler => PropertyChanged;
 
         public event PropertyChangingEventHandler PropertyChanging;
 
-        protected PropertyChangingEventHandler PropertyChangingHandler
-        {
-            get
-            {
-                return PropertyChanging;
-            }
-        }
+        protected PropertyChangingEventHandler PropertyChangingHandler => PropertyChanging;
 
         [DebuggerStepThrough]
         public void VerifyPropertyName(string propertyName)
         {
-            var myType = GetType();
+            Type myType = GetType();
 
             if (!string.IsNullOrEmpty(propertyName)
                 && myType.GetProperty(propertyName) == null)
             {
-                var descriptor = this as ICustomTypeDescriptor;
-
-                if (descriptor != null)
+                if (this is ICustomTypeDescriptor descriptor)
                 {
-                    if (descriptor.GetProperties()
-                        .Cast<PropertyDescriptor>()
-                        .Any(property => property.Name == propertyName))
+                    if (descriptor.GetProperties().Cast<PropertyDescriptor>().Any(property => property.Name == propertyName))
                     {
                         return;
                     }
                 }
-
                 throw new ArgumentException("Property not found", propertyName);
             }
         }
@@ -64,16 +46,13 @@ namespace InstallPackageWPF
             Contract.Requires(args != null);
             PropertyChanged?.Invoke(this, args);
         }
-        public virtual void RaisePropertyChanging(
-            string propertyName)
+        public virtual void RaisePropertyChanging(string propertyName)
         {
             VerifyPropertyName(propertyName);
-
             PropertyChanging?.Invoke(this, new PropertyChangingEventArgs(propertyName));
         }
 
-        public virtual void RaisePropertyChanged(
-            string propertyName)
+        public virtual void RaisePropertyChanged(string propertyName)
         {
             VerifyPropertyName(propertyName);
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -81,22 +60,20 @@ namespace InstallPackageWPF
 
         public virtual void RaisePropertyChanging<T>(Expression<Func<T>> propertyExpression)
         {
-            var handler = PropertyChanging;
+            PropertyChangingEventHandler handler = PropertyChanging;
             if (handler != null)
             {
-                var propertyName = GetPropertyName(propertyExpression);
+                string propertyName = GetPropertyName(propertyExpression);
                 handler(this, new PropertyChangingEventArgs(propertyName));
             }
         }
 
         public virtual void RaisePropertyChanged<T>(Expression<Func<T>> propertyExpression)
         {
-            var handler = PropertyChanged;
-
+            PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null)
             {
-                var propertyName = GetPropertyName(propertyExpression);
-
+                string propertyName = GetPropertyName(propertyExpression);
                 if (!string.IsNullOrEmpty(propertyName))
                 {
                     RaisePropertyChanged(propertyName);
@@ -111,13 +88,13 @@ namespace InstallPackageWPF
                 throw new ArgumentNullException("propertyExpression");
             }
 
-            var memberExpression = propertyExpression.Body as MemberExpression;
+            MemberExpression memberExpression = propertyExpression.Body as MemberExpression;
             if (memberExpression == null)
             {
                 throw new ArgumentException("属性错误", "propertyExpression");
             }
 
-            var property = memberExpression.Member as PropertyInfo;
+            PropertyInfo property = memberExpression.Member as PropertyInfo;
             if (property == null)
             {
                 throw new ArgumentException("属性错误", "propertyExpression");
@@ -132,7 +109,7 @@ namespace InstallPackageWPF
             return memberExpression.Member.Name;
         }
 
-       
+
         protected bool Set<T>(
             Expression<Func<T>> propertyExpression,
             ref T field,
@@ -149,7 +126,7 @@ namespace InstallPackageWPF
             return true;
         }
 
-        
+
         protected bool Set<T>(
             string propertyName,
             ref T field,

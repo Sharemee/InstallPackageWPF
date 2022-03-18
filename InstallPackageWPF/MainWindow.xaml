@@ -42,18 +42,18 @@
                                 <Rectangle Width="8" Height="3" Fill="#FF4BA1EE" Margin="0,1,0,0"/>
                             </StackPanel>
                             <StackPanel VerticalAlignment="Bottom" Margin="1,0,0,0">
-                                <Rectangle Width="8" Height="3" Fill="#FF4BA1EE" Margin="0,1,0,0"></Rectangle>
-                                <Rectangle Width="8" Height="3" Fill="#FF4BA1EE" Margin="0,1,0,0"></Rectangle>
-                                <Rectangle Width="8" Height="3" Fill="#FF4BA1EE" Margin="0,1,0,0"></Rectangle>
+                                <Rectangle Width="8" Height="3" Fill="#FF4BA1EE" Margin="0,1,0,0"/>
+                                <Rectangle Width="8" Height="3" Fill="#FF4BA1EE" Margin="0,1,0,0"/>
+                                <Rectangle Width="8" Height="3" Fill="#FF4BA1EE" Margin="0,1,0,0"/>
                             </StackPanel>
                             <StackPanel VerticalAlignment="Bottom" Margin="1,0,0,0">
-                                <Rectangle Width="8" Height="3" Fill="#FF4BA1EE" Margin="0,1,0,0"></Rectangle>
-                                <Rectangle Width="8" Height="3" Fill="#FF4BA1EE" Margin="0,1,0,0"></Rectangle>
-                                <Rectangle Width="8" Height="3" Fill="#FF4BA1EE" Margin="0,1,0,0"></Rectangle>
-                                <Rectangle Width="8" Height="3" Fill="#FF4BA1EE" Margin="0,1,0,0"></Rectangle>
-                                <Rectangle Width="8" Height="3" Fill="#FF4BA1EE" Margin="0,1,0,0"></Rectangle>
-                                <Rectangle Width="8" Height="3" Fill="#FF4BA1EE" Margin="0,1,0,0"></Rectangle>
-                                <Rectangle Width="8" Height="3" Fill="#FF4BA1EE" Margin="0,1,0,0"></Rectangle>
+                                <Rectangle Width="8" Height="3" Fill="#FF4BA1EE" Margin="0,1,0,0"/>
+                                <Rectangle Width="8" Height="3" Fill="#FF4BA1EE" Margin="0,1,0,0"/>
+                                <Rectangle Width="8" Height="3" Fill="#FF4BA1EE" Margin="0,1,0,0"/>
+                                <Rectangle Width="8" Height="3" Fill="#FF4BA1EE" Margin="0,1,0,0"/>
+                                <Rectangle Width="8" Height="3" Fill="#FF4BA1EE" Margin="0,1,0,0"/>
+                                <Rectangle Width="8" Height="3" Fill="#FF4BA1EE" Margin="0,1,0,0"/>
+                                <Rectangle Width="8" Height="3" Fill="#FF4BA1EE" Margin="0,1,0,0"/>
                                 <Rectangle Width="8" Height="3" Fill="#FF4BA1EE" Margin="0,1,0,0"></Rectangle>
                                 <Rectangle Width="8" Height="3" Fill="#FF4BA1EE" Margin="0,1,0,0"></Rectangle>
                                 <Rectangle Width="8" Height="3" Fill="#FF4BA1EE" Margin="0,1,0,0"></Rectangle>
@@ -710,7 +710,7 @@
                 <Grid Visibility="{Binding Default,Converter={StaticResource conBoolAsVisiable}}">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,-100,0,0" HorizontalAlignment="Center">
                         <Path Width="35" Height="40" Stretch="Fill" Fill="#FFFEFFFF" Data="{DynamicResource pathLogo}"></Path>
-                        <TextBlock Margin="15,0,0,0" Text="音 乐 教 学 云 平 台" FontSize="25" Foreground="#FFFFFFFE" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                        <TextBlock Margin="15,0,0,0" Text="音 乐 教 学 云 平 台" FontSize="25" Foreground="#FFFFFFFE" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </StackPanel>
                     <!-- 立刻安装 -->
                     <Button Name="btnInstall1" Click="btnInstall_Click" Content="立 即 安 装" Margin="0,60,0,0" FontSize="18" Width="200" Height="50"/>
@@ -718,16 +718,16 @@
                 <Grid Visibility="{Binding CustomPath,Converter={StaticResource conBoolAsVisiable}}">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,-100,0,0" HorizontalAlignment="Center">
                         <Path Width="35" Height="40" Stretch="Fill" Fill="#FFFEFFFF" Data="{DynamicResource pathLogo}"></Path>
-                        <TextBlock Margin="15,0,0,0" Text="音 乐 教 学 云 平 台" FontSize="25" Foreground="#FFFFFFFE" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                        <TextBlock Margin="15,0,0,0" Text="音 乐 教 学 云 平 台" FontSize="25" Foreground="#FFFFFFFE" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </StackPanel>
-                    <Button Name="btnInstall2" Click="btnInstall_Click" Content="立 即 安 装" Margin="0,60,0,0" FontSize="18" Width="200" Height="50"></Button>
+                    <Button Name="btnInstall2" Click="btnInstall_Click" Content="立 即 安 装" Margin="0,60,0,0" FontSize="18" Width="200" Height="50"/>
                 </Grid>
                 <Grid Visibility="{Binding SetupComplete,Converter={StaticResource conBoolAsVisiable}}">
                     <Grid VerticalAlignment="Center" Margin="0,-30,0,0" HorizontalAlignment="Center">
-                        <Path Width="50" Height="30" Margin="75,30,0,0" Fill="White" Data="{DynamicResource pathSetup1}"></Path>
-                        <Path Width="85" Height="60" Fill="White" Data="{DynamicResource pathSetup2}"></Path>
+                        <Path Width="50" Height="30" Margin="75,30,0,0" Fill="White" Data="{DynamicResource pathSetup1}"/>
+                        <Path Width="85" Height="60" Fill="White" Data="{DynamicResource pathSetup2}"/>
                     </Grid>
-                    <TextBlock Text="安装完成" Margin="20,100,0,0" Foreground="#FFFDFDFF" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"></TextBlock>
+                    <TextBlock Text="安装完成" Margin="20,100,0,0" Foreground="#FFFDFDFF" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
                 </Grid>
             </Grid>
         </Border>
@@ -806,12 +806,16 @@
                 </Grid>
             </Border>
         </Grid>
-        <Grid Grid.Row="1" Visibility="{Binding SetupComplete,Converter={StaticResource conBoolAsVisiable}}">
+        <!-- 安装完成界面 -->
+        <!--<Grid Grid.Row="1" Visibility="{Binding SetupComplete,Converter={StaticResource conBoolAsVisiable}}">-->
+        <Grid Grid.Row="1" Visibility="Collapsed">
             <Border Background="#FFF8F8F8" CornerRadius="0,0,5,5">
                 <Button Name="btnComplete" Margin="30,0,0,0" Click="btnComplete_Click" BorderBrush="#FF5F5F5F" Background="#FFF1F1F1" Foreground="#FF5F5F5F" Content="立即使用" Width="150" Height="50"/>
             </Border>
         </Grid>
-        <Border Grid.RowSpan="2" Visibility="{Binding Agreement,Converter={StaticResource conBoolAsVisiable}}" Background="#FFF8F8F8" CornerRadius="5" Margin="15,30,15,5">
+        <!-- 用户协议 -->
+        <!--<Border Grid.RowSpan="2" Visibility="{Binding Agreement,Converter={StaticResource conBoolAsVisiable}}" Background="#FFF8F8F8" CornerRadius="5" Margin="15,30,15,5">-->
+        <Border Grid.RowSpan="2" Visibility="Collapsed" Background="#FFF8F8F8" CornerRadius="5" Margin="15,30,15,5">
             <Grid>
                 <Grid.RowDefinitions>
                     <!--<RowDefinition Height="60"></RowDefinition>-->
@@ -825,7 +829,9 @@
                 <Button x:Name="btnAgree" Click="btnAgree_Click" Grid.Row="1" Foreground="#FF646464" Background="#FFEFEFEF" Width="160" Height="45" BorderBrush="#FF646464" Content="同意"></Button>
             </Grid>
         </Border>
-        <Grid Visibility="{Binding SetupProgress,Converter={StaticResource conBoolAsVisiable}}" Grid.RowSpan="2">
+        <!-- 安装进度显示 -->
+        <!--<Grid Visibility="{Binding SetupProgress,Converter={StaticResource conBoolAsVisiable}}" Grid.RowSpan="2">-->
+        <Grid Visibility="Collapsed" Grid.RowSpan="2">
             <Border Background="#FF0078E6" CornerRadius="5"/>
             <Path Margin="0,-150,0,0" Fill="#FFE1FFFF" Width="60" Height="70" Data="{DynamicResource pathLogo}">
                 <Path.Effect>
@@ -834,7 +840,8 @@
             </Path>
             <TextBlock Margin="0,60,0,0" Foreground="#FFFAFBFF" FontSize="16" FontWeight="Light" VerticalAlignment="Center" HorizontalAlignment="Center" Text="即将开启全新的音乐教学模式"></TextBlock>
             <ProgressBar Height="10" Margin="80,180,80,0" Value="{Binding InstallProgress}" Minimum="0" Maximum="100"/>
-            <animation:InstallAnimationUC Height="350" Width="460" Margin="0,-120,0,0"/>
+            <!-- 安装动画 -->
+            <animation:InstallAnimationUC Height="350" Width="460" Margin="0,-120,0,0" Visibility="Hidden"/>
         </Grid>
     </Grid>
 </lib:ChildWindow>
