@@ -88,8 +88,8 @@ namespace InstallPackageWPF
         /// </summary>
         public bool Default
         {
-            get { return _default; }
-            set { Set(ref _default, value); }
+            get => _default;
+            set => _ = Set(ref _default, value);
         }
         private bool _customPath;
 
@@ -180,7 +180,6 @@ namespace InstallPackageWPF
         private void btnUserAgreement_Click(object sender, RoutedEventArgs e)
         {
             CurrentSetupState = SetupState.Agreement;
-
         }
 
         private void btnSelectFolder_Click(object sender, RoutedEventArgs e)

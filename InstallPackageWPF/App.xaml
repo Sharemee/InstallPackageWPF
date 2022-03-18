@@ -13,15 +13,15 @@
                 <Setter Property="FontFamily" Value="微软雅黑"/>
             </Style>
             <DropShadowEffect x:Key="ShadowRound"
-                      BlurRadius="12"
-                      Direction="320"
-                      ShadowDepth="5"
-                      Color="#FF78E1FA" />
+                              BlurRadius="12"
+                              Direction="320"
+                              ShadowDepth="5"
+                              Color="#FF78E1FA" />
             <DropShadowEffect x:Key="ShadowWindow"
-                      BlurRadius="15"
-                      Direction="270"
-                      ShadowDepth="2"
-                      Color="Gray" />
+                              BlurRadius="15"
+                              Direction="270"
+                              ShadowDepth="2"
+                              Color="Gray" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/InstallPackageWPF;component/Themes/ButtonStyle.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/InstallPackageWPF;component/Themes/ProgressStyle.xaml"/>
