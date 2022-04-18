@@ -95,7 +95,6 @@ namespace InstallPackageWPF.WindowsBase
         public virtual void RaisePropertyChanging(string propertyName)
         {
             VerifyPropertyName(propertyName);
-
             PropertyChanging?.Invoke(this, new PropertyChangingEventArgs(propertyName));
         }
         public virtual void RaisePropertyChanged(string propertyName)

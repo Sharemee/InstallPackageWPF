@@ -98,7 +98,7 @@ namespace InstallPackageWPF
                 }
                 return false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //MessageBox.Show(ex.Message);
                 return false;
